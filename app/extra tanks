@@ -1,0 +1,151 @@
+COLORS:
+ 0: Sans Eye Color
+ 1: Light green
+ 2: Odd orange
+ 3: Light Yellow
+ 4: Light Purple
+ 5: Pink
+ 6: Light Gray #1
+ 7: Light Gray #2
+ 8: White
+ 9:  Dark Gray
+ 10: Blue
+ 11: Green
+ 12: Red
+ 13: Yellow
+ 14: Purple
+ 15: Magenta
+ 16: Gray
+ 17: Dark Gray
+ 18: White (Again)
+ 19: Pure Black
+ 20: Blue then Red 
+ 21: Grey then Blue
+ 22: Grey then Blue
+ 23: Red then Grey
+ 24: Red then Grey
+ 25: Dark Green
+ 26: Navy
+ 27: Cyan
+ 28: Red
+ 29: Red then Orange 
+ 30: Pink then White 
+ 31: Blue then Cyan 
+ 32: Lime
+ 33: Orange
+ 34: Bright Purple
+ 35: Yellow
+ 36: rainbow 
+ //server: https://exodus3.glitch.me/
+exports.FTBToArras = {
+    PARENT: [exports.genericTank],
+    LABEL: "PLACEHOLDER",
+    SIZE: 12,
+    SHAPE: 0,
+    GUNS: [{
+            POSITION: [18, 8, 1, 0, 0, 0, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([
+                    [8, 0, 0.001, 1, 1, 0.75, 1, 5.85, 1, 3, 1, 0.00001, 1]
+                ]),
+                TYPE: exports.bullet,
+                COLOR: 5
+            },
+        },
+        {
+            POSITION: [18, 8, 1, 0, 0, 315, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([
+                    [8, 0, 0.001, 1, 1, 0.75, 1, 5.85, 1, 3, 1, 0.00001, 1]
+                ]),
+                TYPE: exports.bullet,
+                COLOR: 5
+            },
+        },
+        {
+            POSITION: [18, 8, 1, 0, 0, 45, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([
+                    [8, 0, 0.001, 1, 1, 0.75, 1, 5.85, 1, 3, 1, 0.00001, 1]
+                ]),
+                TYPE: exports.bullet,
+                COLOR: 5
+            },
+        },
+    ],
+};
+exports.hexagondecor = {
+        PARENT: exports.genericTank,
+        LABEL: 'Turret',
+        SHAPE: 6,
+        BODY: {
+            FOV: 0.8,
+        },
+        COLOR: 16,
+        //CONTROLLERS: ['expand'],
+    };
+TURRETS: [{
+                          /*  SIZE     X       Y     ANGLE    ARC   LAYER*/
+                    POSITION: [8,      0,      0,     0,     360,     1, ],
+                            TYPE: exports.hexagondecorred,
+                 }, ],
+                         exports.peashooter = {
+            PARENT: [exports.genericTank],
+            LABEL: 'Peashooter',
+            STAT_NAMES: statnames.generic,
+            DANGER: 6,
+            GUNS: [ { /*** LENGTH  WIDTH   ASPECT    X       Y     ANGLE   DELAY */
+                POSITION: [  20,     8,      1,      0,      0,      0,      0,   ], 
+                    PROPERTIES: {
+                        SHOOT_SETTINGS: combineStats([g.basic, g.flank, g.flank]),
+                        TYPE: exports.bullet,
+                    }, }, {
+                POSITION: [   7,    7.5,    0.6,     7,      0,      0,      0,   ], 
+                    PROPERTIES: {
+                        SHOOT_SETTINGS: combineStats([g.swarm, g.battle, g.carrier]),
+                        TYPE: exports.swarm,
+                        STAT_CALCULATOR: gunCalcNames.swarm,          
+                        }, }, {
+                POSITION: [  13,     8,      1,      0,      0,     180,     0,   ],
+                    }, {
+                POSITION: [   4,     8,     1.7,    13,      0,     180,     0,   ], 
+                    PROPERTIES: {
+                        SHOOT_SETTINGS: combineStats([g.trap]),
+                        TYPE: exports.trap, STAT_CALCULATOR: gunCalcNames.trap,
+                    }, },
+            ],
+        }; - i tried to add it but the game broke
+                exports.sentries = {
+            PARENT: [exports.genericTank],
+            LABEL: 'Sentries',
+            RESET_UPGRADES: false,
+            SKILL: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            LEVEL: -1,
+            BODY: { // def
+                SHIELD: 3,
+                REGEN: 1.3,
+                HEALTH: 9,
+                DAMAGE: 3,
+                DENSITY: 20,
+                FOV: 1,
+            },
+           // SHAPE: [
+            //  [-1, -0.8],
+            //  [-0.8, -1],
+             // [0.8, -1],
+            //  [1, -0.8],
+             // [0.2, 0],
+             // [1, 0.8],
+            //  [0.8, 1],
+             // [-0.8, 1],
+             // [-1, 0.8],
+           // ],
+            TURRETS: [],
+            GUNS: [ { /*** LENGTH  WIDTH   ASPECT    X       Y     ANGLE   DELAY */
+                POSITION: [  18,    10,    -1.4,     0,      0,      0,      0,   ], 
+                PROPERTIES: {
+                    SHOOT_SETTINGS: combineStats([g.basic,]),
+                    TYPE: exports.bullet,
+                }, }, 
+            ],
+        };
